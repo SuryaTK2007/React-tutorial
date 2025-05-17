@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { useTheme } from "./ThemeContext";
 function Posts(){
+    const {theme}=useTheme();
     const {data, isLoading, error}=useQuery({
         queryKey:['posts'],
         queryFn: ()=>
@@ -12,7 +14,7 @@ function Posts(){
           <h2>Blog Posts</h2>
           <ul>
             {data.slice(0,5).map((post)=>(
-                <li key={post.id}>{post.title}</li>
+                <li key={post.id} className={theme}>{post.title}</li>
             ))}
           </ul>
        </div>
