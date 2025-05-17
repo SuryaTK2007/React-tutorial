@@ -6,6 +6,7 @@ function App(){
   const About=lazy(()=>import('./components/About'));
   const Post=lazy(()=>import('./components/Posts'));
   const Contact=lazy(()=>import('./components/Contact'));
+  const NotFound=lazy(()=>import('./components/NotFound'));
   return(
       <div>
         <nav>
@@ -17,6 +18,7 @@ function App(){
             <Route path="/about" element={<About />}/>
             <Route path="/post" element={<Post/>}/>
             <Route path="/Contact" element={<Contact/>}/>
+            <Route path="*" element={<NotFound/>}/>
            </Routes>
         </Suspense>
       </div>
