@@ -1,4 +1,13 @@
+import {useState} from "react";
+
 function About(){
-    return <h1>This is About Page</h1>
+    const [Like,setLike]=useState(0);
+    return(
+       <div>
+         <h1>This is about page</h1>
+         <p>Like this page?</p>
+         <button onClick={()=>setLike(Like+1)}>Likes: {Like}</button>
+       </div>
+    );
 }
 export default About;
