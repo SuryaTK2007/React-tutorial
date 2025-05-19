@@ -1,21 +1,26 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 function Contact(){
     const[name, setName]=useState('');
     const[message, setMessage]=useState('');
+    const[savedName, setSavedName]=useState('');
     const[submitted, setSubmitted]=useState(false);
-    const handleSubmit=(e)=>{
+    const handleSubmit=useCallback((e)=>{
         e.preventDefault();
         if(name && message){
+            const savedName=name;
             setSubmitted(true);
             setMessage('');
             setName('');
+            setSavedName(savedName);
         }
-    };
+    },
+    [name, message]
+    );
     return(
         <div>
             <h2>Contact us</h2>
             {submitted ?(
-                <p>Thank you, {name}, for your message</p>
+                <p>Thank you, {savedName}, for your message</p>
             ):(
                <form onSubmit={handleSubmit}>
                     <div>
