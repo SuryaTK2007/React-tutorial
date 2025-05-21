@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useMemo, useReducer, useState } from "react";
 function reducer(state, action){
     switch(action.type){
         case 'ADD_TODO':
@@ -18,6 +18,9 @@ function reducer(state, action){
 function Todo(){
     const [state, dispatch]=useReducer(reducer,{todos:[]});
     const [input, setInput]=useState('');
+    const completedCount=useMemo(()=>{
+        return state.todos.filter((todo)=>todo.completed).length;
+    },[state.todos])
     const handleAdd=(e)=>{
         e.preventDefault();
         if(input){
@@ -28,6 +31,7 @@ function Todo(){
     return(
         <div>
             <h2>Todo List</h2>
+            <p>Completed tasks: {completedCount}/{state.todos.length}</p>
             <form onSubmit={handleAdd}>
                <input
                   type="text"
