@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { useTheme } from "./ThemeContext";
+import useDocumentTitle from "./useDocumentTitle";
 function Posts(){
+    useDocumentTitle("Posts")
     const {theme}=useTheme();
     const {data, isLoading, error}=useQuery({
         queryKey:['posts'],

@@ -1,6 +1,8 @@
 import Counter from "./Counter";
 import {useState, useEffect} from 'react'
+import useDocumentTitle from "./useDocumentTitle";
 function Home(){
+    useDocumentTitle("Home");
     const[seconds, setSeconds]=useState(0);
     useEffect(()=>{
         const timer=setInterval(()=>{

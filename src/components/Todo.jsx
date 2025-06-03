@@ -1,4 +1,5 @@
 import { useMemo, useReducer, useState } from "react";
+import useDocumentTitle from "./useDocumentTitle";
 function reducer(state, action){
     switch(action.type){
         case 'ADD_TODO':
@@ -16,6 +17,7 @@ function reducer(state, action){
     }
 }
 function Todo(){
+    useDocumentTitle("Todo")
     const [state, dispatch]=useReducer(reducer,{todos:[]});
     const [input, setInput]=useState('');
     const completedCount=useMemo(()=>{

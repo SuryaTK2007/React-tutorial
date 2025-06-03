@@ -1,5 +1,7 @@
 import { useCallback, useState, useRef} from "react";
+import useDocumentTitle from "./useDocumentTitle";
 function Contact(){
+    useDocumentTitle("Contact")
     const[name, setName]=useState('');
     const[message, setMessage]=useState('');
     const[savedName, setSavedName]=useState('');
